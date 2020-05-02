@@ -1,0 +1,96 @@
+<%
+# BigBlueButton open source conferencing system - http://www.bigbluebutton.org/.
+# Copyright (c) 2018 BigBlueButton Inc. and by respective authors (see below).
+# This program is free software; you can redistribute it and/or modify it under the
+# terms of the GNU Lesser General Public License as published by the Free Software
+# Foundation; either version 3.0 of the License, or (at your option) any later
+# version.
+#
+# BigBlueButton is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+# You should have received a copy of the GNU Lesser General Public License along
+# with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
+%>
+
+<div class="modal fade" id="createRoomModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content text-center">
+      <div class="modal-body">
+        <div class="card-body p-sm-6">
+          <div class="card-title">
+            <h3 class="create-only"><%= t("modal.create_room.title") %></h3>
+            <h3 class="update-only"><%= t("modal.room_settings.title") %></h3>
+          </div>
+
+          <%= form_for(:room, url: rooms_path) do |f| %>
+            <div class="input-icon mb-2">
+              <span class="input-icon-addon">
+                <i class="fas fa-chalkboard-teacher"></i>
+              </span>
+              <%= f.text_field :name, id: "create-room-name", class: "form-control text-center", value: "", placeholder: t("modal.create_room.name_placeholder"), autocomplete: :off %>
+              <div class="invalid-feedback text-left"><%= t("modal.create_room.not_blank") %></div>
+            </div>
+
+            <div class="input-icon mb-2">
+              <span onclick="generateAccessCode()" class="input-icon-addon allow-icon-click cursor-pointer">
+                <i class="fas fa-dice"></i>
+              </span>
+              <%= f.label :access_code, t("modal.create_room.access_code_placeholder"), id: "create-room-access-code", class: "form-control" %>
+              <%= f.hidden_field :access_code %>
+              <span onclick="ResetAccessCode()" class="input-icon-addon allow-icon-click cursor-pointer">
+                <i class="far fa-trash-alt"></i>
+              </span>
+            </div>
+
+            <% if Rails.configuration.room_features.include? "mute-on-join" %>
+              <label class="custom-switch pl-0 mt-3 mb-3 w-100 text-left d-inline-block">
+                <span class="custom-switch-description"><%= t("modal.room_settings.mute")%></span>
+                <%= f.check_box :mute_on_join, class: "custom-switch-input", checked: false %>
+                <span class="custom-switch-indicator float-right cursor-pointer"></span>
+              </label>
+            <% end %>
+
+            <% if Rails.configuration.room_features.include? "require-moderator-approval" %>
+              <label class="custom-switch pl-0 mt-3 mb-3 w-100 text-left d-inline-block">
+                <span class="custom-switch-description"><%= t("modal.room_settings.require_approval")%></span>
+                <%= f.check_box :require_moderator_approval, class: "custom-switch-input", checked: false %>
+                <span class="custom-switch-indicator float-right cursor-pointer"></span>
+              </label>
+            <% end %>
+
+            <% if Rails.configuration.room_features.include? "anyone-can-start" %>
+              <label class="custom-switch pl-0 mt-3 mb-3 w-100 text-left d-inline-block">
+                <span class="custom-switch-description"><%= t("modal.room_settings.start")%></span>
+                <%= f.check_box :anyone_can_start, class: "custom-switch-input", checked: false %>
+                <span class="custom-switch-indicator float-right cursor-pointer"></span>
+              </label>
+            <% end %>
+
+            <% if Rails.configuration.room_features.include? "all-join-moderator" %>
+              <label class="custom-switch pl-0 mt-3 mb-3 w-100 text-left d-inline-block">
+                <span class="custom-switch-description"><%= t("modal.room_settings.join_moderator")%></span>
+                <%= f.check_box :all_join_moderator, class: "custom-switch-input", checked: false %>
+                <span class="custom-switch-indicator float-right cursor-pointer"></span>
+              </label>
+            <% end %>
+
+            <label id="auto-join-label" class="create-only custom-switch pl-0 mt-3 mb-3 w-100 text-left d-inline-block">
+              <span class="custom-switch-description"><%= t("modal.create_room.auto_join") %></span>
+              <%= f.check_box :auto_join, class: "custom-switch-input", checked: false %>
+              <span class="custom-switch-indicator float-right cursor-pointer"></span>
+            </label>
+          <div class="mt-4">
+            <%= f.submit t("modal.create_room.create"), class: "create-only btn btn-primary btn-block" %>
+            <%= f.submit t("modal.room_settings.update"), class: "update-only btn btn-primary btn-block" %>
+          </div>
+          <% end %>
+        </div>
+        <div class="card-footer">
+          <p class="create-only"><%= t("modal.create_room.free_delete") %></p>
+          <p class="update-only"><%= t("modal.room_settings.footer_text") %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

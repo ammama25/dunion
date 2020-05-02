@@ -1,0 +1,54 @@
+<%
+# BigBlueButton open source conferencing system - http://www.bigbluebutton.org/.
+# Copyright (c) 2018 BigBlueButton Inc. and by respective authors (see below).
+# This program is free software; you can redistribute it and/or modify it under the
+# terms of the GNU Lesser General Public License as published by the Free Software
+# Foundation; either version 3.0 of the License, or (at your option) any later
+# version.
+#
+# BigBlueButton is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+# You should have received a copy of the GNU Lesser General Public License along
+# with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
+%>
+
+<div class="row mt-2 farsi">
+  <% if search %>
+    <div class="col-4">
+      <p class="subtitle"><%= subtitle %></p>
+    </div>
+
+    <div class="col-8">
+      <% if admin_invite_registration %>
+        <div id="invite-user" class="d-inline-block float-left ml-3">
+          <%= link_to "#inviteModal", :class => "btn btn-primary", "data-toggle": "modal" do %>
+            <%= t("administrator.users.invite") %> <i class="fas fa-paper-plane ml-1"></i>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div id="search-bar" class="d-inline-block float-left">
+        <div class="input-group">
+          <input id="search-input" type="text" class="form-control" placeholder="<%= t("settings.search") %>..." value="<%= @search %>">
+          <% unless @search.blank? %>
+            <span id="clear-search" class="text-primary" onclick="clearSearch()">
+              <i class="fas fa-times"></i>
+            </span>
+          <% end %>
+          <span class="input-group-append">
+            <button class="btn btn-outline-primary" type="button" onclick="searchPage()">
+              <i class="fas fa-search"></i>
+            </button>
+          </span>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <div class="col-12">
+      <p class="subtitle"><%= subtitle %></p>
+    </div>
+  <% end %>
+</div>
+
+<hr class="mt-0">
