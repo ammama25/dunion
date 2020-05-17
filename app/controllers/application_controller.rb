@@ -131,7 +131,7 @@ class ApplicationController < ActionController::Base
 
   # Relative root helper (when deploying to subdirectory).
   def relative_root
-    Rails.configuration.relative_url_root || ""
+    Rails.configuration.relative_url_root || "/b"
   end
   helper_method :relative_root
 

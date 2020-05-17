@@ -4,6 +4,6 @@
 
 require_relative 'config/environment'
 
-map Greenlight::Application.config.relative_url_root || "/" do
+map Greenlight::Application.config.relative_url_root || "/b" do
   run Rails.application
 end

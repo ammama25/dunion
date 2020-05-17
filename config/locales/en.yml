@@ -161,7 +161,7 @@ en:
         username: Username
       title: Manage Users
   add_to_google_calendar: "Add to Google Calendar"
-  bigbluebutton: WebinLand
+  bigbluebutton: Dunion
   bigbluebutton_exception: Oops, there was an error when starting the meeting!
   cancel: Cancel
   cookies:
@@ -265,7 +265,7 @@ en:
     search:
       start: Start searching...
   landing:
-    about: "Easily manage all your meetings with Webinland without time or space restrictions."
+    about: "Easily manage all your meetings with Dunion without time or space restrictions."
     about1: "use in any place and at any time"
     about2: "invite guest users with high security"
     about3: "hold public and private meetings at the same time"

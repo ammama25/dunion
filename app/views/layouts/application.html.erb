@@ -21,7 +21,7 @@
     <head>
   <% end %> 
     <META HTTP-EQUIV=”Content-Type” CONTENT=”text/html; charset=utf-8″>
-    <link href="https://fonts.googleapis.com/css2?family=Markazi+Text&display=swap" rel="stylesheet"> 
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Markazi+Text&display=swap" rel="stylesheet">  -->
     <!-- <link href="https://fonts.googleapis.com/css2?family=Scheherazade:wght@700&display=swap" rel="stylesheet">  -->
     <!-- <link href="https://fonts.googleapis.com/css2?family=Mirza&display=swap" rel="stylesheet">  -->
     <% if Rails.configuration.google_analytics %>
@@ -67,7 +67,7 @@
     </script>
   </head>
 
-  <body class="app-background " data-controller="<%= params[:controller] %>" data-action="<%= params[:action] %>" data-relative-root="<%= Rails.configuration.relative_url_root || "/" %>">
+  <body class="app-background " data-controller="<%= params[:controller] %>" data-action="<%= params[:action] %>" data-relative-root="<%= Rails.configuration.relative_url_root || "/b" %>">
     <%= render "shared/header" %>
 
     <div class="wrapper">
