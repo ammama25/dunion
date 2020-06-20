@@ -85,11 +85,11 @@ Rails.application.configure do
   
 
   ActionMailer::Base.smtp_settings = {
-    address: 'webmail.dunion.ir',
+    address: 'mail.dunion.ir',
     port: '25',
     domain: 'dunion.ir',
     user_name: 'noreply@dunion.ir',
-    password: 'NOP@D@ni@n1230',
+    password: 'o{$p-q{Mu!3v',
     authentication: :plain ,
     enable_starttls_auto: true,
     openssl_verify_mode: 'none'
@@ -169,5 +169,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Set the relative url root for deployment to a subdirectory.
-  config.relative_url_root =  ENV['RELATIVE_URL_ROOT'] || "/b" if ENV['RELATIVE_URL_ROOT'] != "/"
+  config.relative_url_root =  ENV['RELATIVE_URL_ROOT'] || "/b/" if ENV['RELATIVE_URL_ROOT'] != "/"
 end

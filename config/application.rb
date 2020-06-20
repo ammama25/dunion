@@ -49,7 +49,8 @@ module Greenlight
     # Default credentials (test-install.blindsidenetworks.com/bigbluebutton).
     config.bigbluebutton_endpoint_default = "http://test-install.blindsidenetworks.com/bigbluebutton/api/"
     config.bigbluebutton_secret_default = "8cd8ef52e8e101574e400365b55e11a6"
-
+    #ENV["BIGBLUEBUTTON_ENDPOINT"] = "http://172.16.26.121/bigbluebutton"
+    #ENV["BIGBLUEBUTTON_SECRET"] = "f4c70b0793683eaf0cc8e4bc49147420f734cbc546c63b26ff5cc0412764ec49"
     # Use standalone BigBlueButton server.
     config.bigbluebutton_endpoint = if ENV["BIGBLUEBUTTON_ENDPOINT"].present?
        ENV["BIGBLUEBUTTON_ENDPOINT"]
